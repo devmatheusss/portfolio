@@ -60,9 +60,11 @@ export function Header() {
             <span className="text-text/70 text-xs">{discordInfo.discord_user.username}</span>
           </motion.div>
 
-          <AnimatePresence mode="wait">
-            {isHovering && <ActivityCard activity={discordInfo.activities[0]} />}
-          </AnimatePresence>
+          {discordInfo.activities.length > 0 && (
+            <AnimatePresence mode="wait">
+              {isHovering && <ActivityCard spotify={discordInfo.spotify} activities={discordInfo.activities} />}
+            </AnimatePresence>
+          )}
         </>
       )}
     </div>

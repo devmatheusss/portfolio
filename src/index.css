@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind utilities;
+@tailwind components;
+
+@layer base {
+  * {
+    -webkit-font-smoothing: atialiased;
+    @apply font-sans;
+  }
+
+  *::-webkit-scrollbar {
+    @apply hidden;
+  }
+
+  body {
+    @apply bg-background text-text overflow-hidden;
+  }
+}

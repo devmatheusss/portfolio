@@ -23,27 +23,27 @@ export function Router() {
       })
     }
 
-    window.addEventListener('mousemove', e => handleWindowMouseMove(e))
+    window.addEventListener('mousemove', (e) => handleWindowMouseMove(e))
 
     return () => {
-      window.removeEventListener('mousemove', e => handleWindowMouseMove(e))
+      window.removeEventListener('mousemove', (e) => handleWindowMouseMove(e))
     }
   }, [])
 
   return (
     <>
       <div
-        className='absolute h-24 w-24 bg-accent rounded-full -z-10 blur-3xl'
+        className="absolute h-24 w-24 bg-accent rounded-full -z-10 blur-3xl"
         style={{
           top: coords.y - 44,
-          left: coords.x - 44
+          left: coords.x - 44,
         }}
-      ></div>
+      />
       <Header />
-      <AnimatePresence mode='wait' initial={false}>
+      <AnimatePresence mode="wait" initial={false}>
         <Routes location={location} key={location.pathname}>
-          <Route path='/' element={<Greeting />} />
-          <Route path='/projects' element={<Projects />} />
+          <Route path="/" element={<Greeting />} />
+          <Route path="/projects" element={<Projects />} />
         </Routes>
       </AnimatePresence>
     </>

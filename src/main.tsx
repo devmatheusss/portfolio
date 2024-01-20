@@ -17,10 +17,10 @@ import { Router } from './router'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-      <BrowserRouter>
-        <Routes>
-          <Route path='/*' element={<Router />} />
-        </Routes>
-      </BrowserRouter>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/*" element={<Router />} />
+      </Routes>
+    </BrowserRouter>
   </React.StrictMode>,
 )

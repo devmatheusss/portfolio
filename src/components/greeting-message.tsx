@@ -1,22 +1,33 @@
-import { AnimatePresence, motion } from "framer-motion";
-import { useState, useEffect } from "react";
+import { AnimatePresence, motion } from 'framer-motion'
+import { useState, useEffect } from 'react'
 
 export function GreetingMessage() {
-  const [showHello, setShowHello] = useState(false);
+  const [showHello, setShowHello] = useState(false)
+  const [message, setMessage] = useState<'Hello' | 'Olá'>('Hello')
+  const greeting = [
+    {
+      id: "hello",
+      label: "Hello"
+    },
+    {
+      id: "ola",
+      label: "Olá"
+    },
+  ]
 
   useEffect(() => {
-    // Após 3 segundos, altera o estado para mostrar "Hello"
+    // Após 3 segundos, alterna entre "Hello" e "Olá"
     const timeout = setTimeout(() => {
-      setShowHello(prev => !prev);
-    }, 3000);
+      setMessage(message === 'Hello' ? 'Olá' : 'Hello')
+    }, 3000)
 
     // Limpa o timeout ao desmontar o componente
-    return () => clearTimeout(timeout);
-  }, [showHello]);
+    return () => clearTimeout(timeout)
+  }, [message])
 
   return (
     <AnimatePresence mode="wait">
-      {!showHello ? (
+      {message === 'Olá' ? (
         <motion.h1
           key="ola"
           className="font-bold text-[120px]"

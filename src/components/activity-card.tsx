@@ -1,13 +1,18 @@
-import { motion } from "framer-motion"
+import { motion } from 'framer-motion'
 import type { Activity, Spotify } from 'use-lanyard'
 
 interface ActivityCardProps {
-  activities: Activity[];
-  spotify: Spotify | null;
+  activities: Activity[]
+  spotify: Spotify | null
 }
 
-export function ActivityCard({ activities: activitiesWSpotify, spotify }: ActivityCardProps) {
-  const activities = activitiesWSpotify.filter((activity) => activity.id !== 'spotify:1')
+export function ActivityCard({
+  activities: activitiesWSpotify,
+  spotify,
+}: ActivityCardProps) {
+  const activities = activitiesWSpotify.filter(
+    (activity) => activity.id !== 'spotify:1',
+  )
 
   return (
     <motion.div
@@ -19,7 +24,7 @@ export function ActivityCard({ activities: activitiesWSpotify, spotify }: Activi
       <strong className="text-sm leading-none">What am I doing?</strong>
 
       <section className="flex flex-col gap-3">
-        {activities.map(activity => {
+        {activities.map((activity) => {
           return (
             <div key={activity.id} className="flex items-start gap-2">
               <div className="relative">
@@ -36,8 +41,15 @@ export function ActivityCard({ activities: activitiesWSpotify, spotify }: Activi
               </div>
               <div className="flex flex-col overflow-hidden">
                 <strong className="text-sm truncate">{activity.name}</strong>
-                <span className="text-xs text-text/80 truncate">{activity.state}</span>
-                <span className="text-xs text-text/80 truncate" title={activity.details}>{activity.details}</span>
+                <span className="text-xs text-text/80 truncate">
+                  {activity.state}
+                </span>
+                <span
+                  className="text-xs text-text/80 truncate"
+                  title={activity.details}
+                >
+                  {activity.details}
+                </span>
               </div>
             </div>
           )
@@ -49,12 +61,18 @@ export function ActivityCard({ activities: activitiesWSpotify, spotify }: Activi
 
             <div className="flex items-start gap-2">
               <div className="relative">
-                <img src={spotify.album_art_url!} className="w-10 h-10 rounded-lg border border-secondary shrink-0" />
+                <img
+                  src={spotify.album_art_url!}
+                  alt={spotify.song}
+                  className="w-10 aspect-square object-cover rounded-lg border border-secondary shrink-0"
+                />
                 <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse absolute -top-0.5 -right-0.5" />
               </div>
               <div className="flex flex-col overflow-hidden">
                 <strong className="text-xs truncate">{spotify.song}</strong>
-                <span className="text-text/80 text-[10px]">{spotify.artist}</span>
+                <span className="text-text/80 text-[10px] truncate">
+                  {spotify.artist}
+                </span>
               </div>
             </div>
           </>

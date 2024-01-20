@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
-import { Project } from '../components/project'
-import { projects } from '../data'
+import { Project } from '@/components/project'
+import { projects } from '@/data'
 
 const container = {
   hidden: {
@@ -9,9 +9,9 @@ const container = {
   show: {
     // opacity: 1,
     transition: {
-      staggerChildren: 0.1
-    }
-  }
+      staggerChildren: 0.1,
+    },
+  },
 }
 
 export function Projects() {
@@ -23,15 +23,15 @@ export function Projects() {
       // }}
       animate={{
         x: 0,
-        opacity: 1
+        opacity: 1,
       }}
       exit={{
         x: '100%',
-        opacity: 0
+        opacity: 0,
       }}
       transition={{
         duration: 1,
-        ease: [.55,.56,.38,.91]
+        ease: [0.55, 0.56, 0.38, 0.91],
       }}
       className="flex items-center h-screen"
     >
@@ -39,9 +39,9 @@ export function Projects() {
         variants={container}
         initial="hidden"
         animate="show"
-        className='min-h-[256px] w-full px-8 p-4 flex gap-8 overflow-x-auto'
+        className="min-h-[256px] w-full px-8 p-4 flex gap-8 overflow-x-auto"
       >
-        {projects.map(project => {
+        {projects.map((project) => {
           return <Project key={project.id} project={project} />
         })}
       </motion.section>
